@@ -1,18 +1,6 @@
 <template>
   <div class="page">
     <div class="page__bd">
-        <!--轮播图-->
-        <swiper :indicator-dots="indicatorDots"
-                :autoplay="autoplay"
-                :interval="interval"
-                :duration="duration"
-                :circular="circular">
-            <div v-for="item in imgUrls" :key="index">
-                <swiper-item>
-                    <image :src="item" class="slide-image" />
-                </swiper-item>
-            </div>
-        </swiper>
         <!--搜索栏-->
       <div class="weui-search-bar">
         <div class="weui-search-bar__form">
@@ -31,32 +19,30 @@
         <div @click="scanQR" :hidden="inputShowed" class="scan"><span class="iconfont icon-saoma icon"></span></div>
         <div class="weui-search-bar__cancel-btn" :hidden="!inputShowed" @click="hideInput">Cancel</div>
       </div>
+        <!--轮播图-->
+        <AppSwiper :imgUrls="imgUrls"></AppSwiper>
         <!--产品列表-->
-      <good-item></good-item>
+        <GoodsItem></GoodsItem>
     </div>
   </div>
 </template>
 
 <script>
   // import config from '@/config'
-  // import product from '../../components/product'
-  import goods from '../../components/goods'
+  import AppSwiper from '../../components/AppSwiper.vue'
+  import GoodsItem from '../../components/GoodsItem.vue'
 
   export default {
     components: {
-      'good-item': goods
+      GoodsItem,
+      AppSwiper
     },
     data () {
       return {
-        indicatorDots: true,
-        autoplay: true,
-        interval: 5000,
-        duration: 900,
-        circular: true,
         imgUrls: [
-          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-          'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-          'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+          'https://d2kferpni7vbkj.cloudfront.net/media/catalog/category/Cemoy-Banner_1_1.jpg',
+          'https://3.bp.blogspot.com/-xCetM1FUuDY/Vm-R9C-uHUI/AAAAAAAANSY/L59A0Nv2AD8/s1600/LEGO.png',
+          'http://www.sugros.com/wp-content/uploads/2017/01/1077-800x326.jpg'
         ],
         inputShowed: false,
         inputVal: '',
@@ -98,16 +84,10 @@
   .weui-search-bar__cancel-btn{
     color: #586c94;
   }
-  .weui-btn{
-    margin: auto 10px;
-  }
+
   .icon{
     margin-left: 10px;
     font-size: 20px;
-  }
-  .slide-image {
-      width: 100%;
-      height: 100%;
   }
 
 

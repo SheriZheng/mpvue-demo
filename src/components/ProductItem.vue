@@ -12,7 +12,7 @@
 <script>
   import {mapGetters, mapActions} from 'vuex'
   export default {
-    name: 'product',
+    name: 'ProductItem',
     data () {
       return {
       }
