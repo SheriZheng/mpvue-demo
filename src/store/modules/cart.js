@@ -1,3 +1,7 @@
+/*
+import * as types from '../mutation-types'
+*/
+
 const state = {
   product_List: [{
     id: 1001,

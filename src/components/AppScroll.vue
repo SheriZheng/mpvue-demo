@@ -2,29 +2,31 @@
     <div class="container-list">
         <scroll-view class="cate-scroll" scroll-y>
             <div class="cate-container">
-                <div class="cate-box" v-for="item in categories" :key="item">
+                <div class="cate-box" v-for="(item, index) in categories" :key="index">
                     <div :id="item.id"
                          class="cate-navbar-item"
                          :class="activeCateId==item.id?'cate-selected':''"
-                         @click="tabClick">
+                         @click="tabClick(index)">
                         {{item.name}}
                     </div>
                 </div>
             </div>
         </scroll-view>
         <scroll-view class="goods-scroll" scroll-y>
-            <div class="goods-container">
-                <div class="goods-box"
-                     v-for="item in subList"
-                     :key="item"
-                     :data-id="item.id">
-                    <div class="image-box">
-                        <img :src="item.img"/>
+            <ul class="goods-list">
+                <li class="goods-item" v-for="(item, index) in subList" :key="index">
+                    <div class="goods-img">
+                        <img :src="item.img" :alt="item.name">
                     </div>
-                    <span class="goods-title">{{item.name}}</span>
-                    <span class="goods-price">${{item.price}}</span>
-                </div>
-            </div>
+                    <div class="goods-info">
+                        <p class="goods-title">{{ item.name }}</p>
+                        <div class="goods-price">
+                            <span>${{ item.price }}</span>
+                        </div>
+                        <span class="add" @click="addToCart(item)">+</span>
+                    </div>
+                </li>
+            </ul>
         </scroll-view>
     </div>
 </template>
@@ -43,6 +45,7 @@
     },
     created: function () {
       this.setList()
+      this.$store.dispatch('getAllProducts')
     },
 
     computed: {
@@ -50,8 +53,8 @@
     },
     methods: {
       ...mapActions(['addToCart']),
-      tabClick (e) {
-        this.activeCateId = e.currentTarget.id
+      tabClick (index) {
+        this.activeCateId = index
         this.setList()
       },
       setList () {
@@ -103,49 +106,87 @@
     }
     .goods-scroll{
         height:100%;
-        flex: 1
+        flex: 1;
     }
 
-    .goods-container{
+    ul,
+    li,
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .goods-list {
+        padding-top: 8px;
+        overflow-y: scroll;
+    }
+
+    .goods-item {
         display: flex;
-        flex-wrap:wrap;
-        justify-content:space-between;
-        box-sizing: content-box;
-        padding:2px 5px 5px 0;
+        margin-bottom: 8px;
+        padding: 10px 10px;
+        min-height: 62px;
+        background: #fff;
     }
-    .goods-box{
-        width:49%;
-        overflow:hidden;
-        margin-bottom:12px;
-        background:#fff;
-    }
-    .goods-box .image-box{
-        width:100%;
-        overflow: hidden;
-        padding:4px 4px 4px 4px;
-        box-sizing:border-box;
 
+    .goods-img {
+        position: relative;
+        margin-right: 4%;
+        display: block;
+        width: 16%;
     }
-    .image-box image{
-        width:100%;
-        height:135px;
+
+    .goods-img img {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
     }
-    .goods-box .goods-title{
-        width:128px;
-        text-overflow:ellipsis;
-        white-space:nowrap;
+
+    .goods-info {
+        position: relative;
+        width: 80%;
+    }
+
+    .goods-title {
+        font-size: 14px;
+        width: 100%;
+        color: #363636;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         overflow: hidden;
-        font-size:12px;
-        padding-top:9px;
-        color:#000;
-        margin:0 6px;
     }
-    .goods-box .goods-price{
-        width:140px;
-        overflow:hidden;
-        padding:9px 0;
-        color:#ff3366;
-        font-size:12px;
-        margin-left:6px;
+
+    .goods-price {
+        margin-top: 6px;
+        line-height: 1;
     }
+
+    .goods-price span {
+        font-size: 15px;
+        color: #ff2d51;
+    }
+    .add {
+        position: absolute;
+        right: 10px;
+        bottom: 2px;
+        width: 32px;
+        height: 22px;
+        background-color: #fa8c35;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
 </style>

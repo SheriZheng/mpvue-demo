@@ -1,19 +1,7 @@
 <template>
     <app-scroll :categories="categoryList"></app-scroll>
 </template>
-<!--grid 已废弃
-    <div class="page">
-        <div class="page__bd">
-            <div class="weui-grids">
-                <block v-for="item in categoryList" :key="index">
-                    <navigator :url="item.url" class="weui-grid" hover-class="weui-grid_active">
-                        <image class="weui-grid__icon" :src="item.src" />
-                        <div class="weui-grid__label">{{item.name}}</div>
-                    </navigator>
-                </block>
-            </div>
-        </div>
-    </div>-->
+
 <script>
   import AppScroll from '../../components/AppScroll'
 
@@ -37,6 +25,12 @@
   }
 </script>
 
+
+
 <style>
+    app-scroll {
+        width: 100%;
+        height: 500px;
+    }
 </style>
 

@@ -22,7 +22,7 @@
         <!--轮播图-->
         <AppSwiper :imgUrls="imgUrls"></AppSwiper>
         <!--产品列表-->
-        <GoodsItem></GoodsItem>
+        <GoodsItem :productList="productList"></GoodsItem>
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@
   // import config from '@/config'
   import AppSwiper from '../../components/AppSwiper.vue'
   import GoodsItem from '../../components/GoodsItem.vue'
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     components: {
@@ -48,7 +49,11 @@
         inputVal: ''
       }
     },
+    computed: {
+      ...mapGetters(['productList'])
+    },
     methods: {
+      ...mapActions(['addToCart']),
       showInput () {
         this.inputShowed = true
       },

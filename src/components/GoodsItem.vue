@@ -16,18 +16,12 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'GoodsItem',
+    props: ['productList'],
     data () {
       return {
       }
-    },
-    computed: {
-      ...mapGetters(['productList'])
-    },
-    methods: {
-      ...mapActions(['addToCart'])
     }
   }
 </script>

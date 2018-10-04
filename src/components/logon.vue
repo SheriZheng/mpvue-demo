@@ -1,5 +1,17 @@
 <template>
-    <div class="weui-cells">
+    <div class="page">
+        <div class="page__bd">
+            <div class="weui-grids">
+                <block v-for="item in categoryList" :key="index">
+                    <navigator :url="item.url" class="weui-grid" hover-class="weui-grid_active">
+                        <image class="weui-grid__icon" :src="item.src" />
+                        <div class="weui-grid__label">{{item.name}}</div>
+                    </navigator>
+                </block>
+            </div>
+        </div>
+    </div>
+    <!--<div class="weui-cells">
         <div class="page__bd">
             <div class="weui-cells weui-cells_after-title">
                 <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
@@ -15,9 +27,29 @@
                 </navigator>
             </div>
         </div>
-    </div>
+    </div>-->
 </template>
 <script>
+  export default {
+    data () {
+      return {
+        grids: [
+          {src: '../../static/img/baby.png', name: 'Button'},
+          {src: '../../static/img/baby.png', name: 'Cell'},
+          {src: '../../static/img/baby.png', name: 'Toast'},
+          {src: '../../static/img/baby.png', name: 'Dialog'},
+          {src: '../../static/img/baby.png', name: 'Progress'},
+          {src: '../../static/img/baby.png', name: 'Msg'},
+          {src: '../../static/img/baby.png', name: 'Article'},
+          {src: '../../static/img/baby.png', name: 'ActionSheet'},
+          {src: '../../static/img/baby.png', name: 'Icons'}
+        ]
+      }
+    }
+  }
 </script>
 <style>
+    page {
+        margin-top: 50px;
+    }
 </style>

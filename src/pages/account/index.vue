@@ -9,7 +9,6 @@
             <p class="member-name">{{userInfo.nickName}}</p>
         </div>
         <button v-if="!loginSuccess" type="primary" open-type="getUserInfo" @getuserinfo="bindGetUserInfo">点击授权</button>
-        <userPhone v-if="loginSuccess && !getNumber" @changeStatus="changeStatus"></userPhone>
         <logon v-if="getNumber"></logon>
     </div>
 </template>
