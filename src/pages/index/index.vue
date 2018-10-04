@@ -45,8 +45,7 @@
           'http://www.sugros.com/wp-content/uploads/2017/01/1077-800x326.jpg'
         ],
         inputShowed: false,
-        inputVal: '',
-        productList: []
+        inputVal: ''
       }
     },
     methods: {
@@ -68,9 +67,6 @@
         wx.scanCode({
         })
       }
-      /* addToCart (good) {
-        cart.cartList.push(good)
-      } */
     }
   }
 </script>
