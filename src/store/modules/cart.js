@@ -1,8 +1,5 @@
-/*
-import * as types from '../mutation-types'
-*/
-
 const state = {
+  // 商品列表
   product_List: [{
     id: 1001,
     name: 'Beats EP头戴式耳机',
@@ -95,18 +92,27 @@ const state = {
     sales: 18,
     img: 'http://img.alicdn.com/imgextra/i3/TB16avCQXXXXXcsXpXXXXXXXXXX_!!0-item_pic.jpg_400x400q60s30.jpg_.webp'
   }],
+  // 添加到购物车的商品列表
   added: []
 }
 
 const getters = {
+  // 商品列表
   productList: state => state.product_List,
+  // 购物车列表
   cartList: state => {
-    return state.added.map(({id, amount}) => {
+    return state.added.map(({id, num}) => {
       let product = state.product_List.find(n => n.id === id)
       return {
         ...product,
-        amount
+        num
       }
+    })
+  },
+  totalPrice: (state, getters) => {
+    let total = 0
+    getters.cartList.forEach(n=>{
+      
     })
   }
 }
@@ -125,10 +131,10 @@ const mutations = {
     if (!record) {
       state.added.push({
         id,
-        amount: 1
+        num: 1
       })
     } else {
-      record.amount++
+      record.num++
     }
     console.info(record, state.added)
   }

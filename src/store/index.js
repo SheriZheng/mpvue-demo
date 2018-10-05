@@ -10,5 +10,5 @@ export default new Vuex.Store({
   modules: {
     cart
   },
-  strict: process.env.NODE_ENV !== 'production'
+  strict: process.env.NODE_ENV !== 'production' // 严格模式
 })

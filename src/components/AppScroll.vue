@@ -45,7 +45,6 @@
     },
     created: function () {
       this.setList()
-      this.$store.dispatch('getAllProducts')
     },
 
     computed: {

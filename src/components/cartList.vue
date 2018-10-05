@@ -12,8 +12,7 @@
                 <icon></icon>
                 <span>全选</span>
             </div>
-            <span>Total: {{ total | currency }}</span>
-            <div class="toBuy" @click="checkout(products)">去结算</div>
+            <div class="toBuy">去结算</div>
         </div>
     </div>
 </template>
@@ -23,19 +22,7 @@
   export default {
     name: 'cartList',
     computed: {
-      ...mapGetters({
-        products: 'cartProducts'
-      }),
-      total () {
-        return this.products.reduce((total, item) => {
-          return total + item.price * item.quantity
-        }, 0) // Array.prototype.reduce(callback[, initialValue])  计算总价
-      }
-    },
-    methods: {
-      checkout (products) { // 结账
-        this.$store.dispatch('checkout', products) // 分发actions checkout
-      }
+      ...mapGetters(['cartList'])
     }
   }
 </script>
