@@ -9,19 +9,25 @@
                 <div class="goods-price">
                     <span>${{ item.price }}</span>
                 </div>
-                <span class="add" @click="addToCart">+</span>
+                <span class="add" @click="addToCart(item)">+</span>
             </div>
         </li>
     </ul>
 </template>
 
 <script>
+  import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'GoodsItem',
-    props: ['productList'],
     data () {
       return {
       }
+    },
+    computed: {
+      ...mapGetters(['productList'])
+    },
+    methods: {
+      ...mapActions(['addToCart'])
     }
   }
 </script>

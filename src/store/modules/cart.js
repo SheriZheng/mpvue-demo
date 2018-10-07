@@ -111,9 +111,17 @@ const getters = {
   },
   totalPrice: (state, getters) => {
     let total = 0
-    getters.cartList.forEach(n=>{
-      
+    getters.cartList.forEach(n => {
+      total += n.price * n.num
     })
+    return total
+  },
+  totalNum: (state, getters) => {
+    let total = 0
+    getters.cartList.forEach(n => {
+      total += n.num
+    })
+    return total
   }
 }
 
@@ -122,6 +130,10 @@ const actions = {
     commit('add', {
       id: product.id
     })
+  },
+  // delete items
+  delProduct ({commit}, product) {
+    commit('del', product)
   }
 }
 
@@ -136,7 +148,13 @@ const mutations = {
     } else {
       record.num++
     }
-    console.info(record, state.added)
+  },
+  del (state, product) {
+    state.added.forEach((n, i) => {
+      if (n.id === product.id) {
+        state.added.splice(i, 1)
+      }
+    })
   }
 }
 

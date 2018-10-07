@@ -31,7 +31,6 @@
   // import config from '@/config'
   import AppSwiper from '../../components/AppSwiper.vue'
   import GoodsItem from '../../components/GoodsItem.vue'
-  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     components: {
@@ -49,11 +48,7 @@
         inputVal: ''
       }
     },
-    computed: {
-      ...mapGetters(['productList'])
-    },
     methods: {
-      ...mapActions(['addToCart']),
       showInput () {
         this.inputShowed = true
       },
