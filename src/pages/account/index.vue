@@ -9,24 +9,21 @@
             <p class="member-name">{{userInfo.nickName}}</p>
         </div>
         <button v-if="!loginSuccess" type="primary" open-type="getUserInfo" @getuserinfo="bindGetUserInfo">点击授权</button>
-        <logon v-if="getNumber"></logon>
+        <log-on v-if="loginSuccess"></log-on>
     </div>
 </template>
 
 <script>
-  import userPhone from '@/components/userPhone'
-  import logon from '@/components/logon'
+  import LogOn from '@/components/LogOn'
   export default {
     data () {
       return {
         loginSuccess: false,
-        getNumber: false,
         userInfo: {}
       }
     },
     components: {
-      logon,
-      userPhone
+      LogOn
     },
 
     methods: {

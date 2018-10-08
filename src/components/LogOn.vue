@@ -1,33 +1,22 @@
 <template>
-    <div class="page">
+    <div class="container">
         <div class="page__bd">
-            <div class="weui-grids">
-                <block v-for="item in categoryList" :key="index">
-                    <navigator :url="item.url" class="weui-grid" hover-class="weui-grid_active">
-                        <image class="weui-grid__icon" :src="item.src" />
-                        <div class="weui-grid__label">{{item.name}}</div>
-                    </navigator>
-                </block>
-            </div>
-        </div>
-    </div>
-    <!--<div class="weui-cells">
-        <div class="page__bd">
-            <div class="weui-cells weui-cells_after-title">
-                <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                    <div class="weui-cell__bd">账号设置</div>
-                    <div class="weui-cell__ft weui-cell__ft_in-access"></div>
+            <div class="weui-cells" v-for="item in grids" :key="index">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" :src="item.src" />
+                    <div class="weui-grid__label">{{item.name}}</div>
                 </navigator>
-                <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <!--<navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                     <div class="weui-cell__bd">快递设置</div>
                     <div class="weui-cell__ft weui-cell__ft_in-access"></div>
                 </navigator>
                 <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                     <div class="weui-cell__bd">退出</div>
-                </navigator>
+                </navigator>-->
             </div>
         </div>
-    </div>-->
+    </div>
+
 </template>
 <script>
   export default {
@@ -49,7 +38,8 @@
   }
 </script>
 <style>
-    page {
+/*    page {
         margin-top: 50px;
-    }
+    }*/
+
 </style>
