@@ -41,5 +41,12 @@
 /*    page {
         margin-top: 50px;
     }*/
+    .container{
+        width: 100%;
+    }
+    .page__bd{
+        width: 100%;
+    }
+
 
 </style>
