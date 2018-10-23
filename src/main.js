@@ -2,10 +2,11 @@ import Vue from 'vue'
 import App from './App'
 import './style/weui.css'
 import './style/iconfont.css'
-// import Fly from 'flyio/dist/npm/wx'
 import store from './store'
+import fly from './utils/request'
 
-// Vue.prototype.$fly = new Fly()
+Vue.prototype.$fly = fly
+
 Vue.config.productionTip = false
 Vue.prototype.$store = store
 App.mpType = 'app'

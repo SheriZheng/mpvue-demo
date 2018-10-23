@@ -2,10 +2,10 @@
     <ul class="goods-list">
         <li class="goods-item" v-for="(item, index) in productList" :key="index">
             <div class="goods-img">
-                <img :src="item.img" :alt="item.name">
+                <img :src="item.image" :alt="item.title">
             </div>
             <div class="goods-info">
-                <p class="goods-title">{{ item.name }}</p>
+                <p class="goods-title">{{ item.title }}</p>
                 <div class="goods-price">
                     <span>${{ item.price }}</span>
                 </div>
@@ -16,18 +16,28 @@
 </template>
 
 <script>
-  import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'GoodsItem',
     data () {
       return {
+        productList: []
       }
     },
-    computed: {
-      ...mapGetters(['productList'])
+    mounted () {
+      this.getProductList()
     },
     methods: {
-      ...mapActions(['addToCart'])
+      async getProductList () {
+        this.$fly.request({
+          method: 'get',
+          url: '/api/goods',
+          body: {}
+        }).then(res => {
+          this.productList = res.data.map((item) => {
+            return item
+          })
+        })
+      }
     }
   }
 </script>
