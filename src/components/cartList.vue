@@ -3,10 +3,10 @@
         <ul class="goods-list" v-if="cartList.length">
             <li class="goods-item" v-for="(item, index) in cartList" :key="index">
                 <div class="goods-img">
-                    <img :src="item.img" :alt="item.name">
+                    <img :src="item.image" :alt="item.title">
                 </div>
                 <div class="goods-info">
-                    <p class="goods-title">{{ item.name }}</p>
+                    <p class="goods-title">{{ item.title }}</p>
                     <div class="goods-price">
                         <span>${{ item.price }}</span>
                         <span class="item_qty">x{{item.num}}</span>

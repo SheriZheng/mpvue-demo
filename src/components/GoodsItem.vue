@@ -1,7 +1,7 @@
 <template>
     <ul class="goods-list">
-        <li class="goods-item" v-for="(item, index) in productList" :key="index">
-            <div class="goods-img">
+        <li class="goods-item" v-for="(item, idx) in productList" :key="item.id">
+            <div class="goods-img" @click="goToDetail(idx)">
                 <img :src="item.image" :alt="item.title">
             </div>
             <div class="goods-info">
@@ -20,7 +20,8 @@
     name: 'GoodsItem',
     data () {
       return {
-        productList: []
+        productList: [],
+        idx: 0
       }
     },
     mounted () {
@@ -36,6 +37,14 @@
           this.productList = res.data.map((item) => {
             return item
           })
+        })
+      },
+      goToDetail (idx) {
+        let good = this.productList[idx]
+        let indexId = good.id
+        let url = '/pages/details/main?id=' + indexId
+        wx.navigateTo({
+          url
         })
       }
     }

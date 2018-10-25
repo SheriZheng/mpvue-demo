@@ -16,10 +16,10 @@
             <ul class="goods-list">
                 <li class="goods-item" v-for="(item, index) in subList" :key="index">
                     <div class="goods-img">
-                        <img :src="item.img" :alt="item.name">
+                        <img :src="item.image" :alt="item.title">
                     </div>
                     <div class="goods-info">
-                        <p class="goods-title">{{ item.name }}</p>
+                        <p class="goods-title">{{ item.title }}</p>
                         <div class="goods-price">
                             <span>${{ item.price }}</span>
                         </div>
